@@ -94,14 +94,19 @@ $nextYear=date("Y-n",strtotime("+1 year",strtotime($now)));
                 $monthDays=date("t",strtotime($firstDay));
 
     // 節日設定
-    $Holiday=array(
-        01-01,
-        02-28,
-        05-01
-    );
-    $Holiday="holiday";
+    $Holiday=[
+        '1-1'=>'元旦',
+        '2-28'=>'和平紀念日',
+        '4-4'=>'兒童節',
+        '4-5'=>'清明節',
+        '5-1'=>'勞動節',
+        '9-3'=>'軍人節',
+        '10-10'=>'國慶日',
+    ];
+    
 
-    // 農曆
+    // 農曆(用hover顯示?)
+    // 放假:端午、中秋
 
     
     ?>
@@ -126,22 +131,27 @@ $nextYear=date("Y-n",strtotime("+1 year",strtotime($now)));
                 
                 <?php
                 for($i=0;$i<6;$i++){
-                    echo "<tr>";
+                    echo "<tr class='align-items-start'>";
                     for($j=0;$j<7;$j++){
                         if($i==0 && $j<$firstDayWeek){
-                            echo "<td class=''>";
+                            echo "<td class='py-2'>";
                             echo "</td>";
-                            }else{
-                                echo "<td>";
-                                $num=$i*7+$j+1-$firstDayWeek;
-                                if($num<=$monthDays){
-                                    echo $num;
-                                    echo "<div class='small mb-3'>";
-                                        echo $Holiday;
-                                    echo "</div>";
+                        }else{
+                            echo "<td class='py-2'>";
+                            $num=$i*7+$j+1-$firstDayWeek;
+                            $md=date("n",strtotime($firstDay)).'-'.$num;
+                            if($num<=$monthDays){
+                                echo "<div class=''>".$num."</div>";
+                                foreach($Holiday as $key => $value){
+                                    if($md == $key){
+                                        echo "<p class='small text-muted'>";
+                                        echo $value;
+                                        echo "</p>";
+                                    }
                                 }
-                            echo "</td>";
                             }
+                            echo "</td>";
+                        }
                     }
                     echo "</tr>";   
                 }    
