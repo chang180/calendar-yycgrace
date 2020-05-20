@@ -1,0 +1,54 @@
+.todayInfo{
+    border:2px solid gray;
+    font-family:noto sans serif;
+    font-weight:400;
+}
+.t1{
+    color:black;
+}
+.tm,.tnum,.twday{
+    color:brown;
+}
+.serchBar>p{
+    font-size:2rem;
+}
+.searchBar>form{
+    background-color:#fff;
+    border-radius:15%;
+}
+.searchtext>input{
+    width:6rem;
+    text-align:center;
+    padding:5px;
+    margin:5px;
+}
+.serchBar>input{
+    width:4rem;
+}
+.selectBar>button{
+    width:6rem;
+    height:3rem;
+    margin:0.3em;
+}
+.selectBar{
+    display:flex;
+}
+
+table{
+    font-family:noto;
+}
+.thisMonth{
+    font-size:20px;
+    color:yellow;
+}
+.thisYear{
+    font-size:10px;
+    color:yellow;
+}
+.weekti>td{
+    color:red;
+}
+tr>td{
+    font-size:15px;
+    color:blue;
+}
