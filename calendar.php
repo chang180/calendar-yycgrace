@@ -12,6 +12,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <!-- handmade -->
     <!-- <link rel="stylesheet" type="text/css" herf="handmade.css"> -->
+
+
 </head>
 <body>
 <?php
@@ -111,27 +113,28 @@ $nextYear=date("Y-n",strtotime("+1 year",strtotime($now)));
     
     ?>
         <div class="mt-3  w-100 vh-75 shadow">
-            <table class="month text-center w-75 rounded-lg m-auto">
+            <table class="month text-center w-100 m-auto row">
+            <tbody class="m-auto">
                 <tr class="text-info font-weight-bold">
                     <td colspan="7">
                     <!-- 顯示英文月份 -->
-                        <div class="thisMonth mt-3 m-1 h3"><?=date("F",strtotime($now));?></div>
-                        <div class="thisYear mt-0 mb-4 h5"><?=date("Y",strtotime($now));?></div>
+                        <div class="thisMonth mt-3 m-1 h2"><?=date("F",strtotime($now));?></div>
+                        <div class="thisYear mt-0 mb-4 h5 font-weight-light border-bottom border-info"><?=date("Y",strtotime($now));?></div>
                     </td>
                 </tr>
-                <tr class="weekti text-success font-weight-normal">
-                    <td>SUN</td>
-                    <td>MON</td>
-                    <td>TUE</td>
-                    <td>WED</td>
-                    <td>THU</td>
-                    <td>FRI</td>
-                    <td>SAT</td>
+                <tr class="weekti text-success font-weight-normal dspace-around h5">
+                    <td class="col">SUN</td>
+                    <td class="col">MON</td>
+                    <td class="col">TUE</td>
+                    <td class="col">WED</td>
+                    <td class="col">THU</td>
+                    <td class="col">FRI</td>
+                    <td class="col">SAT</td>
                 </tr>
                 
                 <?php
                 for($i=0;$i<6;$i++){
-                    echo "<tr class='align-items-start'>";
+                    echo "<tr class='align-items-around'>";
                     for($j=0;$j<7;$j++){
                         if($i==0 && $j<$firstDayWeek){
                             echo "<td class='py-2'>";
@@ -141,12 +144,12 @@ $nextYear=date("Y-n",strtotime("+1 year",strtotime($now)));
                             $num=$i*7+$j+1-$firstDayWeek;
                             $md=date("n",strtotime($firstDay)).'-'.$num;
                             if($num<=$monthDays){
-                                echo "<div class=''>".$num."</div>";
+                                echo "<div>".$num."</div>";
                                 foreach($Holiday as $key => $value){
                                     if($md == $key){
-                                        echo "<p class='small text-muted'>";
-                                        echo $value;
-                                        echo "</p>";
+                                        echo "<small class='m-0 small text-muted border-top border-warning'>".$value."</small>";
+                                        // echo $value;
+                                        // echo "</p>";
                                     }
                                 }
                             }
@@ -156,10 +159,11 @@ $nextYear=date("Y-n",strtotime("+1 year",strtotime($now)));
                     echo "</tr>";   
                 }    
                 ?>
-    <!-- ****日期迴圈再自己寫一次 -->
+            </tbody>
             </table>
         </div>
 </div>
 </div>
+<div class="fixed-bottom card-footer text-info text-right">copyright &copy yyc</div>
 </body>
 </html>
